@@ -2,17 +2,16 @@ package command
 
 import (
 	"context"
-	"os/user"
 	"time"
 
-	"github.com/danial2026/golang-profile-kafk/internal/profile/domain"
+	"github.com/danial2026/golang-profile-kafka/internal/profile/domain"
 )
 
 type CreateUserHandler struct {
-	userRepo user.Repository
+	userRepo domain.Repository
 }
 
-func NewCreateUserHandler(userRepo user.Repository) CreateUserHandler {
+func NewCreateUserHandler(userRepo domain.Repository) CreateUserHandler {
 	if userRepo == nil {
 		panic("userRepo is nil")
 	}
