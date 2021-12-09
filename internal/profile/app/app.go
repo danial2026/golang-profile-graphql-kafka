@@ -1,8 +1,7 @@
 package app
 
 import (
-	"github.com/ThreeDotsLabs/wild-workouts-go-ddd-example/internal/trainer/app/command"
-	"github.com/ThreeDotsLabs/wild-workouts-go-ddd-example/internal/trainer/app/query"
+	"github.com/danial2026/golang-profile-kafka/internal/profile/app/command"
 )
 
 type Application struct {
@@ -11,14 +10,11 @@ type Application struct {
 }
 
 type Commands struct {
-	CancelTraining   command.CancelTrainingHandler
-	ScheduleTraining command.ScheduleTrainingHandler
+	CreateUser   command.CreateUserHandler
 
-	MakeHoursAvailable   command.MakeHoursAvailableHandler
-	MakeHoursUnavailable command.MakeHoursUnavailableHandler
+	Follow   command.FollowHandler
+	Unfollow command.UnfollowHandler
 }
 
 type Queries struct {
-	HourAvailability      query.HourAvailabilityHandler
-	TrainerAvailableHours query.AvailableHoursHandler
 }

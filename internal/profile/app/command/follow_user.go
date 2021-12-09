@@ -2,7 +2,6 @@ package command
 
 import (
 	"context"
-	"time"
 
 	"github.com/danial2026/golang-profile-kafka/internal/profile/domain"
 )
@@ -19,11 +18,9 @@ func NewFollowHandler(userRepo domain.Repository) FollowHandler {
 	return FollowHandler{userRepo: userRepo}
 }
 
-func (c FollowHandler) Handle(ctx context.Context, users []time.Time) error {
-	for _, userToUpdate := range users {
-		if err := c.userRepo.CreatUser(ctx, userToUpdate); err != nil {
-			return err
-		}
+func (c FollowHandler) Handle(ctx context.Context, username1 string, username2 string) error {
+	if err := c.userRepo.Follow(ctx, username1, username2); err != nil {
+		return err
 	}
 
 	return nil

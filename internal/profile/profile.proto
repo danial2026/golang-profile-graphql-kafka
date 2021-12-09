@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package domain;
+
+option go_package = "github.com/danial2026/golang-profile-kafka/internal/gRPC/service";
+
+message Account {
+  string ID        = 1;
+  string email     = 2;
+  string username  = 3;
+
+  repeated Account following = 4;
+  repeated Account followers = 5;
+}
+
+message CreatAccountRequest {
+    string email     = 1;
+    string username  = 2;
+}
+
+message CreatAccountResponse {
+    string ID        = 1;
+    string email     = 2;
+    string username  = 3;
+}
+
+message GetAccountRequest {
+    string username  = 1;
+}
+
+message GetAccountResponse {
+    string ID        = 1;
+    string email     = 2;
+    string username  = 3;
+}
+
+service User {
+  rpc CreatAccount (CreatAccountRequest) returns (CreatAccountResponse) {}
+} 

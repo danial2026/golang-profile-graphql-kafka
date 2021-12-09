@@ -24,7 +24,7 @@ type MONGOUserRepository struct {
 	db          *mongo.Collection
 }
 
-func NewMONGOUserRepository(db *sqlx.DB) *MONGOUserRepository {
+func NewMONGOUserRepository(db *mongo.Collection) *MONGOUserRepository {
 	if db == nil {
 		panic("missing db")
 	}
@@ -65,7 +65,7 @@ func (m MONGOUserRepository) Unfollow(ctx context.Context, username1 string, use
 	return err
 }
 
-func NewMongoConnection() (*sqlx.DB, error) {
+func NewMongoConnection() (*mongo.Collection, error) {
 	var collection *mongo.Collection
 	var ctx = context.TODO()
 
@@ -80,7 +80,7 @@ func NewMongoConnection() (*sqlx.DB, error) {
 		panic(err)
 	}
 
-	collection = client.Database("subscription_db").Collection("golang-users")
+	collection = client.Database("golang_users_db").Collection("golang_users")
 
-	return client, nil
+	return collection, nil
 }

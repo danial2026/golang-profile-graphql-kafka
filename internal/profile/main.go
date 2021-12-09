@@ -1,27 +1,32 @@
 package main
 
+import (
+	context "context"
+	"fmt"
+	"os"
+	"strings"
+
+	"github.com/danial2026/golang-profile-kafka/internal/gRPC/profile"
+	"github.com/danial2026/golang-profile-kafka/internal/gRPC/server"
+	"github.com/danial2026/golang-profile-kafka/internal/profile/ports"
+	"github.com/danial2026/golang-profile-kafka/internal/profile/service"
+
+	"google.golang.org/grpc"
+)
+
 func main() {
-	// ctx := context.Background()
-	// firestoreClient, err := firestore.NewClient(ctx, os.Getenv("GCP_PROJECT"))
-	// if err != nil {
-	// 	panic(err)
-	// }
-	// // firebaseDB := db{firestoreClient}
+	ctx := context.Background()
 
-	// serverType := strings.ToLower(os.Getenv("SERVER_TO_RUN"))
-	// switch serverType {
-	// case "http":
-	// 	go loadFixtures()
+	application := service.NewApplication(ctx)
 
-	// 	server.RunHTTPServer(func(router chi.Router) http.Handler {
-	// 		return HandlerFromMux(HttpServer{firebaseDB}, router)
-	// 	})
-	// case "grpc":
-	// 	server.RunGRPCServer(func(server *grpc.Server) {
-	// 		svc := GrpcServer{firebaseDB}
-	// 		users.RegisterUsersServiceServer(server, svc)
-	// 	})
-	// default:
-	// 	panic(fmt.Sprintf("server type '%s' is not supported", serverType))
-	// }
+	serverType := strings.ToLower(os.Getenv("SERVER_TO_RUN"))
+	switch serverType {
+	case "grpc":
+		server.RunGRPCServer(func(server *grpc.Server) {
+			svc := ports.NewGrpcServer(application)
+			profile.RegisterGrpcServerServer(server, svc)
+		})
+	default:
+		panic(fmt.Sprintf("server type '%s' is not supported", serverType))
+	}
 }
