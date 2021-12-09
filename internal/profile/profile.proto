@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package domain;
 
-option go_package = "github.com/danial2026/golang-profile-kafka/internal/gRPC/service";
+option go_package = "github.com/danial2026/golang-profile-graphql-kafka/internal/gRPC/service";
 
 message Account {
   string ID        = 1;

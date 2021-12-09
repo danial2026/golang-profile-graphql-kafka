@@ -6,10 +6,10 @@ import (
 	"os"
 	"strings"
 
-	"github.com/danial2026/golang-profile-kafka/internal/gRPC/profile"
-	"github.com/danial2026/golang-profile-kafka/internal/gRPC/server"
-	"github.com/danial2026/golang-profile-kafka/internal/profile/ports"
-	"github.com/danial2026/golang-profile-kafka/internal/profile/service"
+	"github.com/danial2026/golang-profile-graphql-kafka/internal/gRPC/profile"
+	"github.com/danial2026/golang-profile-graphql-kafka/internal/gRPC/server"
+	"github.com/danial2026/golang-profile-graphql-kafka/internal/profile/ports"
+	"github.com/danial2026/golang-profile-graphql-kafka/internal/profile/service"
 
 	"google.golang.org/grpc"
 )

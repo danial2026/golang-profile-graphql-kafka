@@ -1,7 +1,7 @@
 package app
 
 import (
-	"github.com/danial2026/golang-profile-kafka/internal/profile/app/command"
+	"github.com/danial2026/golang-profile-graphql-kafka/internal/profile/app/command"
 )
 
 type Application struct {
@@ -10,7 +10,7 @@ type Application struct {
 }
 
 type Commands struct {
-	CreateUser   command.CreateUserHandler
+	CreateUser command.CreateUserHandler
 
 	Follow   command.FollowHandler
 	Unfollow command.UnfollowHandler

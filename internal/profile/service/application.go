@@ -3,9 +3,9 @@ package service
 import (
 	"context"
 
-	"github.com/danial2026/golang-profile-kafka/internal/profile/adapters"
-	"github.com/danial2026/golang-profile-kafka/internal/profile/app"
-	"github.com/danial2026/golang-profile-kafka/internal/profile/app/command"
+	"github.com/danial2026/golang-profile-graphql-kafka/internal/profile/adapters"
+	"github.com/danial2026/golang-profile-graphql-kafka/internal/profile/app"
+	"github.com/danial2026/golang-profile-graphql-kafka/internal/profile/app/command"
 
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"

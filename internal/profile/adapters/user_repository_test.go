@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/danial2026/golang-profile-kafka/internal/profile/domain"
+	"github.com/danial2026/golang-profile-graphql-kafka/internal/profile/domain"
 
 
 	"go.mongodb.org/mongo-driver/mongo"

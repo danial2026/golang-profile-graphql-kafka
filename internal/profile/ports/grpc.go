@@ -3,8 +3,8 @@ package ports
 import (
 	"context"
 
-	"github.com/danial2026/golang-profile-kafka/internal/profile/app"
-	"github.com/danial2026/golang-profile-kafka/internal/profile/domain"
+	"github.com/danial2026/golang-profile-graphql-kafka/internal/profile/app"
+	"github.com/danial2026/golang-profile-graphql-kafka/internal/profile/domain"
 
 	"github.com/golang/protobuf/ptypes/empty"
 	"google.golang.org/grpc/codes"

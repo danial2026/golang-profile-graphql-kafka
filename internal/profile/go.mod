@@ -1,11 +1,11 @@
-module github.com/danial2026/golang-profile-kafka/internal/profile
+module github.com/danial2026/golang-profile-graphql-kafka/internal/profile
 
 go 1.17
 
 require (
 	cloud.google.com/go/firestore v1.2.0
 	firebase.google.com/go v3.12.0+incompatible
-	// github.com/danial2026/golang-profile-kafka/internal/common v0.0.0-00010101000000-000000000000
+	// github.com/danial2026/golang-profile-graphql-kafka/internal/common v0.0.0-00010101000000-000000000000
 	github.com/go-chi/chi/v5 v5.0.5
 	github.com/go-chi/render v1.0.1
 	github.com/golang/protobuf v1.5.2
@@ -53,4 +53,4 @@ require (
 	honnef.co/go/tools v0.0.1-2020.1.3 // indirect
 )
 
-// replace github.com/danial2026/golang-profile-kafka/internal/common => ../common/
+// replace github.com/danial2026/golang-profile-graphql-kafka/internal/common => ../common/
