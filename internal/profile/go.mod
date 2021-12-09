@@ -19,6 +19,7 @@ require (
 	cloud.google.com/go v0.55.0 // indirect
 	cloud.google.com/go/storage v1.6.0 // indirect
 	github.com/BurntSushi/toml v0.3.1 // indirect
+	// github.com/danial2026/golang-profile-graphql-kafka v0.0.0-20211207075805-f41d1d96627b // indirect
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible // indirect
 	github.com/gin-gonic/gin v1.7.7
 	github.com/go-chi/cors v1.0.1 // indirect
