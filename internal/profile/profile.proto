@@ -14,14 +14,11 @@ message Account {
 }
 
 message CreateAccountRequest {
-    string email     = 1;
-    string username  = 2;
+  Account account  = 1;
 }
 
 message CreateAccountResponse {
-    string ID        = 1;
-    string email     = 2;
-    string username  = 3;
+  Account account  = 1;
 }
 
 service User {
