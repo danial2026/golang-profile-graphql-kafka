@@ -13,17 +13,17 @@ message Account {
   repeated Account followers = 5;
 }
 
-message CreatAccountRequest {
+message CreateAccountRequest {
     string email     = 1;
     string username  = 2;
 }
 
-message CreatAccountResponse {
+message CreateAccountResponse {
     string ID        = 1;
     string email     = 2;
     string username  = 3;
 }
 
 service User {
-  rpc CreatAccount (CreatAccountRequest) returns (CreatAccountResponse) {}
+  rpc CreateAccount (CreateAccountRequest) returns (CreateAccountResponse) {}
 } 

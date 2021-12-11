@@ -19,9 +19,9 @@ func NewGrpcServer(application app.Application) GrpcServer {
 	return GrpcServer{app: application}
 }
 
-func (g GrpcServer) CreateUser(ctx context.Context, user domain.User) (*empty.Empty, error) {
+func (g GrpcServer) CreateAccount(ctx context.Context, user domain.User) (*empty.Empty, error) {
 
-	if err := g.app.Commands.CreateUser.Handle(ctx, user); err != nil {
+	if err := g.app.Commands.CreateAccount.Handle(ctx, user); err != nil {
 		return nil, status.Error(codes.Internal, err.Error())
 	}
 

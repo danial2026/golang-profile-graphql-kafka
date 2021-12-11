@@ -3,7 +3,7 @@ package main
 import (
 	context "context"
 
-	"github.com/danial2026/golang-profile-graphql-kafka/internal/grpc/profile"
+	profile "github.com/danial2026/golang-profile-graphql-kafka/internal/profile/grpc"
 	"github.com/danial2026/golang-profile-graphql-kafka/internal/profile/ports"
 	"github.com/danial2026/golang-profile-graphql-kafka/internal/profile/server"
 	"github.com/danial2026/golang-profile-graphql-kafka/internal/profile/service"

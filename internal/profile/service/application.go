@@ -32,7 +32,7 @@ func NewApplication(ctx context.Context) app.Application {
 
 	return app.Application{
 		Commands: app.Commands{
-			CreateUser: command.NewCreateUserHandler(usersRepository),
+			CreateAccount: command.NewCreateAccountHandler(usersRepository),
 			Follow:     command.NewFollowHandler(usersRepository),
 			Unfollow:   command.NewUnfollowHandler(usersRepository),
 		},

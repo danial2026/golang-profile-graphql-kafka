@@ -6,19 +6,19 @@ import (
 	"github.com/danial2026/golang-profile-graphql-kafka/internal/profile/domain"
 )
 
-type CreateUserHandler struct {
+type CreateAccountHandler struct {
 	userRepo domain.Repository
 }
 
-func NewCreateUserHandler(userRepo domain.Repository) CreateUserHandler {
+func NewCreateAccountHandler(userRepo domain.Repository) CreateAccountHandler {
 	if userRepo == nil {
 		panic("userRepo is nil")
 	}
 
-	return CreateUserHandler{userRepo: userRepo}
+	return CreateAccountHandler{userRepo: userRepo}
 }
 
-func (c CreateUserHandler) Handle(ctx context.Context, user domain.User) error {
+func (c CreateAccountHandler) Handle(ctx context.Context, user domain.User) error {
 	if err := c.userRepo.CreatUser(ctx, user); err != nil {
 		return err
 	}

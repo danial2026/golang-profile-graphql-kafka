@@ -99,7 +99,7 @@ func (x *Account) GetFollowers() []*Account {
 	return nil
 }
 
-type CreatAccountRequest struct {
+type CreateAccountRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -108,8 +108,8 @@ type CreatAccountRequest struct {
 	Username string `protobuf:"bytes,2,opt,name=username,proto3" json:"username,omitempty"`
 }
 
-func (x *CreatAccountRequest) Reset() {
-	*x = CreatAccountRequest{}
+func (x *CreateAccountRequest) Reset() {
+	*x = CreateAccountRequest{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_profile_profile_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -117,13 +117,13 @@ func (x *CreatAccountRequest) Reset() {
 	}
 }
 
-func (x *CreatAccountRequest) String() string {
+func (x *CreateAccountRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CreatAccountRequest) ProtoMessage() {}
+func (*CreateAccountRequest) ProtoMessage() {}
 
-func (x *CreatAccountRequest) ProtoReflect() protoreflect.Message {
+func (x *CreateAccountRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_profile_profile_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -135,26 +135,26 @@ func (x *CreatAccountRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CreatAccountRequest.ProtoReflect.Descriptor instead.
-func (*CreatAccountRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use CreateAccountRequest.ProtoReflect.Descriptor instead.
+func (*CreateAccountRequest) Descriptor() ([]byte, []int) {
 	return file_profile_profile_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *CreatAccountRequest) GetEmail() string {
+func (x *CreateAccountRequest) GetEmail() string {
 	if x != nil {
 		return x.Email
 	}
 	return ""
 }
 
-func (x *CreatAccountRequest) GetUsername() string {
+func (x *CreateAccountRequest) GetUsername() string {
 	if x != nil {
 		return x.Username
 	}
 	return ""
 }
 
-type CreatAccountResponse struct {
+type CreateAccountResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -164,8 +164,8 @@ type CreatAccountResponse struct {
 	Username string `protobuf:"bytes,3,opt,name=username,proto3" json:"username,omitempty"`
 }
 
-func (x *CreatAccountResponse) Reset() {
-	*x = CreatAccountResponse{}
+func (x *CreateAccountResponse) Reset() {
+	*x = CreateAccountResponse{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_profile_profile_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -173,13 +173,13 @@ func (x *CreatAccountResponse) Reset() {
 	}
 }
 
-func (x *CreatAccountResponse) String() string {
+func (x *CreateAccountResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CreatAccountResponse) ProtoMessage() {}
+func (*CreateAccountResponse) ProtoMessage() {}
 
-func (x *CreatAccountResponse) ProtoReflect() protoreflect.Message {
+func (x *CreateAccountResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_profile_profile_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -191,26 +191,26 @@ func (x *CreatAccountResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CreatAccountResponse.ProtoReflect.Descriptor instead.
-func (*CreatAccountResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use CreateAccountResponse.ProtoReflect.Descriptor instead.
+func (*CreateAccountResponse) Descriptor() ([]byte, []int) {
 	return file_profile_profile_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *CreatAccountResponse) GetID() string {
+func (x *CreateAccountResponse) GetID() string {
 	if x != nil {
 		return x.ID
 	}
 	return ""
 }
 
-func (x *CreatAccountResponse) GetEmail() string {
+func (x *CreateAccountResponse) GetEmail() string {
 	if x != nil {
 		return x.Email
 	}
 	return ""
 }
 
-func (x *CreatAccountResponse) GetUsername() string {
+func (x *CreateAccountResponse) GetUsername() string {
 	if x != nil {
 		return x.Username
 	}
@@ -266,15 +266,15 @@ func file_profile_profile_proto_rawDescGZIP() []byte {
 
 var file_profile_profile_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
 var file_profile_profile_proto_goTypes = []interface{}{
-	(*Account)(nil),              // 0: domain.Account
-	(*CreatAccountRequest)(nil),  // 1: domain.CreatAccountRequest
-	(*CreatAccountResponse)(nil), // 2: domain.CreatAccountResponse
+	(*Account)(nil),               // 0: domain.Account
+	(*CreateAccountRequest)(nil),  // 1: domain.CreateAccountRequest
+	(*CreateAccountResponse)(nil), // 2: domain.CreateAccountResponse
 }
 var file_profile_profile_proto_depIdxs = []int32{
 	0, // 0: domain.Account.following:type_name -> domain.Account
 	0, // 1: domain.Account.followers:type_name -> domain.Account
-	1, // 2: domain.User.CreatAccount:input_type -> domain.CreatAccountRequest
-	2, // 3: domain.User.CreatAccount:output_type -> domain.CreatAccountResponse
+	1, // 2: domain.User.CreateAccount:input_type -> domain.CreateAccountRequest
+	2, // 3: domain.User.CreateAccount:output_type -> domain.CreateAccountResponse
 	3, // [3:4] is the sub-list for method output_type
 	2, // [2:3] is the sub-list for method input_type
 	2, // [2:2] is the sub-list for extension type_name
@@ -301,7 +301,7 @@ func file_profile_profile_proto_init() {
 			}
 		}
 		file_profile_profile_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CreatAccountRequest); i {
+			switch v := v.(*CreateAccountRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -313,7 +313,7 @@ func file_profile_profile_proto_init() {
 			}
 		}
 		file_profile_profile_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CreatAccountResponse); i {
+			switch v := v.(*CreateAccountResponse); i {
 			case 0:
 				return &v.state
 			case 1:

@@ -9,13 +9,13 @@ import (
 	status "google.golang.org/grpc/status"
 )
 
-type CreatAccountRequest struct {
+type CreateAccountRequest struct {
 	ID       string `json:"id"`
 	Email    string `json:"email"`
 	Username string `json:"username"`
 }
 
-type CreatAccountResponse struct {
+type CreateAccountResponse struct {
 	ID       string `json:"id"`
 	Email    string `json:"email"`
 	Username string `json:"username"`
@@ -30,7 +30,7 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type GrpcServerClient interface {
-	CreatAccount(ctx context.Context, in *CreatAccountRequest, opts ...grpc.CallOption) (*CreatAccountResponse, error)
+	CreateAccount(ctx context.Context, in *CreateAccountRequest, opts ...grpc.CallOption) (*CreateAccountResponse, error)
 }
 
 type grpcServerClient struct {
@@ -41,9 +41,9 @@ func NewGrpcServerClient(cc grpc.ClientConnInterface) GrpcServerClient {
 	return &grpcServerClient{cc}
 }
 
-func (c *grpcServerClient) CreatAccount(ctx context.Context, in *CreatAccountRequest, opts ...grpc.CallOption) (*CreatAccountResponse, error) {
-	out := new(CreatAccountResponse)
-	err := c.cc.Invoke(ctx, "/domain.GrpcServer/CreatAccount", in, out, opts...)
+func (c *grpcServerClient) CreateAccount(ctx context.Context, in *CreateAccountRequest, opts ...grpc.CallOption) (*CreateAccountResponse, error) {
+	out := new(CreateAccountResponse)
+	err := c.cc.Invoke(ctx, "/domain.GrpcServer/CreateAccount", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -54,7 +54,7 @@ func (c *grpcServerClient) CreatAccount(ctx context.Context, in *CreatAccountReq
 // All implementations must embed UnimplementedGrpcServerServer
 // for forward compatibility
 type GrpcServerServer interface {
-	CreatAccount(context.Context, *CreatAccountRequest) (*CreatAccountResponse, error)
+	CreateAccount(context.Context, *CreateAccountRequest) (*CreateAccountResponse, error)
 	mustEmbedUnimplementedGrpcServerServer()
 }
 
@@ -62,8 +62,8 @@ type GrpcServerServer interface {
 type UnimplementedGrpcServerServer struct {
 }
 
-func (UnimplementedGrpcServerServer) CreatAccount(context.Context, *CreatAccountRequest) (*CreatAccountResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreatAccount not implemented")
+func (UnimplementedGrpcServerServer) CreateAccount(context.Context, *CreateAccountRequest) (*CreateAccountResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateAccount not implemented")
 }
 func (UnimplementedGrpcServerServer) mustEmbedUnimplementedGrpcServerServer() {}
 
@@ -78,20 +78,20 @@ func RegisterGrpcServerServer(s grpc.ServiceRegistrar, srv GrpcServerServer) {
 	s.RegisterService(&GrpcServer_ServiceDesc, srv)
 }
 
-func _GrpcServer_CreatAccount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreatAccountRequest)
+func _GrpcServer_CreateAccount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateAccountRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(GrpcServerServer).CreatAccount(ctx, in)
+		return srv.(GrpcServerServer).CreateAccount(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/domain.GrpcServer/CreatAccount",
+		FullMethod: "/domain.GrpcServer/CreateAccount",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(GrpcServerServer).CreatAccount(ctx, req.(*CreatAccountRequest))
+		return srv.(GrpcServerServer).CreateAccount(ctx, req.(*CreateAccountRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -104,8 +104,8 @@ var GrpcServer_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*GrpcServerServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "CreatAccount",
-			Handler:    _GrpcServer_CreatAccount_Handler,
+			MethodName: "CreateAccount",
+			Handler:    _GrpcServer_CreateAccount_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

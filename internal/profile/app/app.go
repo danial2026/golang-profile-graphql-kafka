@@ -10,7 +10,7 @@ type Application struct {
 }
 
 type Commands struct {
-	CreateUser command.CreateUserHandler
+	CreateAccount command.CreateAccountHandler
 
 	Follow   command.FollowHandler
 	Unfollow command.UnfollowHandler
