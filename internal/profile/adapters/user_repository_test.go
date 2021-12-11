@@ -68,8 +68,8 @@ func testCreateAccount1(t *testing.T, repository user.Repository) {
 	ctx := context.Background()
 
 	testCase := domain.User(
-		Email: "email2@gmail.com",
-		Username: "username1_test"
+		Emai: "email2@gmail.com",
+		Username: "username1_test",
 		)
 
 	t.Run("testFollow", func(t *testing.T) {
@@ -85,7 +85,7 @@ func testCreateAccount2(t *testing.T, repository user.Repository) {
 
 	testCase := domain.User(
 		Email: "email2@gmail.com",
-		Username: "username2_test"
+		Username: "username2_test",
 		)
 
 	t.Run("testFollow", func(t *testing.T) {

@@ -3,7 +3,7 @@ package service
 import (
 	"context"
 
-	"github.com/danial2026/golang-profile-graphql-kafka/internal/profile/adapters"
+	adapters "github.com/danial2026/golang-profile-graphql-kafka/internal/profile/adapters"
 	"github.com/danial2026/golang-profile-graphql-kafka/internal/profile/app"
 	"github.com/danial2026/golang-profile-graphql-kafka/internal/profile/app/command"
 
@@ -13,7 +13,7 @@ import (
 
 func NewApplication(ctx context.Context) app.Application {
 	var collection *mongo.Collection
-	var ctx = context.TODO()
+	// var ctx = context.TODO()
 
 	clientOptions := options.Client().ApplyURI("mongodb://localhost:37017/")
 	client, err := mongo.Connect(ctx, clientOptions)

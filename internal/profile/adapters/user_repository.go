@@ -2,7 +2,7 @@ package adopters
 
 import (
 	"context"
-	"time"
+	// "time"
 
 	"github.com/danial2026/golang-profile-graphql-kafka/internal/profile/domain"
 
@@ -11,17 +11,17 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-type User struct {
-	ID        string    `db:"id"`
-	CreatedAt time.Time `db:"created_at"`
-	Email     string    `db:"email"`
-	Username  string    `db:"username"`
-	Following []User    `db:"following"`
-	Followers []User    `db:"followers"`
-}
+// type User struct {
+// 	ID        string    `db:"id"`
+// 	CreatedAt time.Time `db:"created_at"`
+// 	Email     string    `db:"email"`
+// 	Username  string    `db:"username"`
+// 	Following []User    `db:"following"`
+// 	Followers []User    `db:"followers"`
+// }
 
 type MONGOUserRepository struct {
-	db          *mongo.Collection
+	db *mongo.Collection
 }
 
 func NewMONGOUserRepository(db *mongo.Collection) *MONGOUserRepository {
@@ -42,26 +42,18 @@ func (m MONGOUserRepository) CreatUser(ctx context.Context, user domain.User) er
 }
 
 func (m MONGOUserRepository) Follow(ctx context.Context, username1 string, username2 string) error {
-	_, err := m.db.Update(ctx,
+	_, err := m.db.UpdateOne(ctx,
 		bson.M{"username": username1},
-		bson.M{
-			{
-				"$push": bson.M{"Following": bson.M{username2}}
-			},
-		}
-		)
+		bson.M{"$push": bson.M{"Following": bson.M{"$in": username2}}})
+
 	return err
 }
 
 func (m MONGOUserRepository) Unfollow(ctx context.Context, username1 string, username2 string) error {
-	_, err := m.db.Update(ctx,
+	_, err := m.db.UpdateOne(ctx,
 		bson.M{"username": username1},
-		bson.M{
-			{
-				"$pull": bson.M{"Following": bson.M{"$in": bson.M{username2}}}
-			},
-		}
-		)
+		bson.M{"$pull": bson.M{"Following": bson.M{"$in": username2}}})
+
 	return err
 }
 
