@@ -19,6 +19,18 @@ message CreateAccountRequest {
   Account account  = 1;
 }
 
+message FollowUserRequest {
+  string username1  = 1;
+  string username2  = 2;
+}
+
+message UnfollowUserRequest {
+  string username1  = 1;
+  string username2  = 2;
+}
+
 service User {
   rpc CreateAccount (CreateAccountRequest) returns (google.protobuf.Empty) {}
+  rpc FollowUser (FollowUserRequest) returns (google.protobuf.Empty) {}
+  rpc UnfollowUser (UnfollowUserRequest) returns (google.protobuf.Empty) {}
 } 

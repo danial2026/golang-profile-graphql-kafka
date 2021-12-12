@@ -20,6 +20,7 @@ const _ = grpc.SupportPackageIsVersion7
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type PostsClient interface {
 	CreatePost(ctx context.Context, in *CreatePostRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	LikePost(ctx context.Context, in *LikePostRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type postsClient struct {
@@ -39,11 +40,21 @@ func (c *postsClient) CreatePost(ctx context.Context, in *CreatePostRequest, opt
 	return out, nil
 }
 
+func (c *postsClient) LikePost(ctx context.Context, in *LikePostRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
+	err := c.cc.Invoke(ctx, "/domain.Posts/LikePost", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // PostsServer is the server API for Posts service.
 // All implementations should embed UnimplementedPostsServer
 // for forward compatibility
 type PostsServer interface {
 	CreatePost(context.Context, *CreatePostRequest) (*emptypb.Empty, error)
+	LikePost(context.Context, *LikePostRequest) (*emptypb.Empty, error)
 }
 
 // UnimplementedPostsServer should be embedded to have forward compatible implementations.
@@ -52,6 +63,9 @@ type UnimplementedPostsServer struct {
 
 func (UnimplementedPostsServer) CreatePost(context.Context, *CreatePostRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreatePost not implemented")
+}
+func (UnimplementedPostsServer) LikePost(context.Context, *LikePostRequest) (*emptypb.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method LikePost not implemented")
 }
 
 // UnsafePostsServer may be embedded to opt out of forward compatibility for this service.
@@ -83,6 +97,24 @@ func _Posts_CreatePost_Handler(srv interface{}, ctx context.Context, dec func(in
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Posts_LikePost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(LikePostRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PostsServer).LikePost(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/domain.Posts/LikePost",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PostsServer).LikePost(ctx, req.(*LikePostRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Posts_ServiceDesc is the grpc.ServiceDesc for Posts service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -93,6 +125,10 @@ var Posts_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CreatePost",
 			Handler:    _Posts_CreatePost_Handler,
+		},
+		{
+			MethodName: "LikePost",
+			Handler:    _Posts_LikePost_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
