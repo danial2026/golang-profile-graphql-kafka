@@ -7,19 +7,19 @@ import (
 )
 
 type LikePostHandler struct {
-	userRepo domain.Repository
+	postRepo domain.Repository
 }
 
-func LikePost(userRepo domain.Repository) LikePostHandler {
-	if userRepo == nil {
-		panic("userRepo is nil")
+func LikePost(postRepo domain.Repository) LikePostHandler {
+	if postRepo == nil {
+		panic("postRepo is nil")
 	}
 
-	return LikePostHandler{userRepo: userRepo}
+	return LikePostHandler{postRepo: postRepo}
 }
 
 func (c LikePostHandler) Handle(ctx context.Context, username string, postId string) error {
-	if err := c.userRepo.Like(ctx, username, postId); err != nil {
+	if err := c.postRepo.Like(ctx, username, postId); err != nil {
 		return err
 	}
 

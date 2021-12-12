@@ -29,9 +29,9 @@ func (g GrpcServer) CreatePost(ctx context.Context, post *proto.CreatePostReques
 	return &empty.Empty{}, nil
 }
 
-func (g GrpcServer) LikePost(ctx context.Context, username string, postId string) (*empty.Empty, error) {
+func (g GrpcServer) LikePost(ctx context.Context, likeRequest *proto.LikePostRequest) (*empty.Empty, error) {
 
-	if err := g.app.Commands.LikePost.Handle(ctx, username, postId); err != nil {
+	if err := g.app.Commands.LikePost.Handle(ctx, likeRequest.Username, likeRequest.PostId); err != nil {
 		return nil, status.Error(codes.Internal, err.Error())
 	}
 

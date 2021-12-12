@@ -10,7 +10,7 @@ type CreatePostHandler struct {
 	postRepo domain.Repository
 }
 
-func CreatePost(postRepo domain.Repository) CreatePostHandler {
+func NewCreatePost(postRepo domain.Repository) CreatePostHandler {
 	if postRepo == nil {
 		panic("userRepo is nil")
 	}

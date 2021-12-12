@@ -32,8 +32,8 @@ func NewApplication(ctx context.Context) app.Application {
 
 	return app.Application{
 		Commands: app.Commands{
-			CreatePost: command.CreatePost(postRepository),
-			LikePost: command.LikePost(postRepository),
+			CreatePost: command.NewCreatePost(postRepository),
+			LikePost:   command.LikePost(postRepository),
 		},
 		Queries: app.Queries{},
 	}

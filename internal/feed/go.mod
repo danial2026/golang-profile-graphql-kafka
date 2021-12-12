@@ -1,4 +1,4 @@
-module github.com/danial2026/golang-profile-graphql-kafka/internal/post
+module github.com/danial2026/golang-profile-graphql-kafka/internal/feed
 
 go 1.17
 
