@@ -11,6 +11,7 @@ type Application struct {
 
 type Commands struct {
 	CreatePost command.CreatePostHandler
+	LikePost command.LikePostHandler
 }
 
 type Queries struct {

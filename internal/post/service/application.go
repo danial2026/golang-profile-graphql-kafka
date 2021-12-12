@@ -3,7 +3,7 @@ package service
 import (
 	"context"
 
-	"github.com/danial2026/golang-profile-graphql-kafka/internal/post/adapters"
+	adapters "github.com/danial2026/golang-profile-graphql-kafka/internal/post/adapters"
 	"github.com/danial2026/golang-profile-graphql-kafka/internal/post/app"
 	"github.com/danial2026/golang-profile-graphql-kafka/internal/post/app/command"
 
@@ -13,9 +13,9 @@ import (
 
 func NewApplication(ctx context.Context) app.Application {
 	var collection *mongo.Collection
-	var ctx = context.TODO()
+	// var ctx = context.TODO()
 
-	clientOptions := options.Client().ApplyURI("mongodb://localhost:37017/")
+	clientOptions := options.Client().ApplyURI("mongodb://localhost:57017/")
 	client, err := mongo.Connect(ctx, clientOptions)
 	if err != nil {
 		panic(err)
@@ -28,11 +28,12 @@ func NewApplication(ctx context.Context) app.Application {
 
 	collection = client.Database("golang_users_db").Collection("golang_post")
 
-	postRepository := adapters.NewMONGOUserRepository(collection)
+	postRepository := adapters.NewMONGOPostRepository(collection)
 
 	return app.Application{
 		Commands: app.Commands{
-			CreatePost: command.NewCreatePostHandler(postRepository),
+			CreatePost: command.CreatePost(postRepository),
+			LikePost: command.LikePost(postRepository),
 		},
 		Queries: app.Queries{},
 	}

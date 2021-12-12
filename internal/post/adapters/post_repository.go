@@ -9,12 +9,12 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-type Post struct {
-	ID          string `db:"id"`
-	ProfileId   string `db:"profile_id"`
-	Body        string `db:"body"`
-	CreatedTime string `db:"created_time"`
-}
+// type Post struct {
+// 	ID          string `db:"id"`
+// 	ProfileId   string `db:"profile_id"`
+// 	Body        string `db:"body"`
+// 	CreatedTime string `db:"created_time"`
+// }
 
 type Liked struct {
 	PostId   string `db:"post_id"`
@@ -56,7 +56,7 @@ func NewMongoConnection() (*mongo.Collection, error) {
 	var collection *mongo.Collection
 	var ctx = context.TODO()
 
-	clientOptions := options.Client().ApplyURI("mongodb://localhost:37017/")
+	clientOptions := options.Client().ApplyURI("mongodb://localhost:57017/")
 	client, err := mongo.Connect(ctx, clientOptions)
 	if err != nil {
 		panic(err)

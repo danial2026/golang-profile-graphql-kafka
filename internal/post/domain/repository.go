@@ -3,8 +3,6 @@ package domain
 import (
 	"context"
 	"fmt"
-
-	"github.com/danial2026/golang-profile-graphql-kafka/internal/post/domain"
 )
 
 type NotFoundError struct {
@@ -18,7 +16,7 @@ func (e NotFoundError) Error() string {
 type Repository interface {
 	CreatPost(
 		ctx context.Context,
-		post domain.Post) error
+		post Post) error
 
 	Like(
 		ctx context.Context,
