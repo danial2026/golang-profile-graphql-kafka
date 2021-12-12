@@ -14,7 +14,7 @@ func (e NotFoundError) Error() string {
 }
 
 type Repository interface {
-	CreatPost(
+	CreatePost(
 		ctx context.Context,
 		post Post) error
 

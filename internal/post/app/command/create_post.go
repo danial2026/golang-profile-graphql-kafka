@@ -19,7 +19,7 @@ func NewCreatePost(postRepo domain.Repository) CreatePostHandler {
 }
 
 func (c CreatePostHandler) Handle(ctx context.Context, user domain.Post) error {
-	if err := c.postRepo.CreatPost(ctx, user); err != nil {
+	if err := c.postRepo.CreatePost(ctx, user); err != nil {
 		return err
 	}
 

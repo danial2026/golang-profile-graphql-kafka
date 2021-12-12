@@ -37,7 +37,7 @@ type sqlContextGetter interface {
 	GetContext(ctx context.Context, dest interface{}, query string, args ...interface{}) error
 }
 
-func (m MONGOPostRepository) CreatPost(ctx context.Context, post domain.Post) error {
+func (m MONGOPostRepository) CreatePost(ctx context.Context, post domain.Post) error {
 	_, err := m.db.InsertOne(ctx, post)
 	return err
 }
