@@ -2,10 +2,13 @@ package adopters
 
 import (
 	"context"
+	"math/rand"
+	"testing"
 	"time"
 
 	"github.com/danial2026/golang-profile-graphql-kafka/internal/profile/domain"
-
+	user "github.com/danial2026/golang-profile-graphql-kafka/internal/profile/domain"
+	"github.com/stretchr/testify/require"
 
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
@@ -67,10 +70,10 @@ func testCreateAccount1(t *testing.T, repository user.Repository) {
 	t.Helper()
 	ctx := context.Background()
 
-	testCase := domain.User(
-		Emai: "email2@gmail.com",
+	testCase := domain.User{
+		Email: "email2@gmail.com",
 		Username: "username1_test",
-		)
+	}
 
 	t.Run("testFollow", func(t *testing.T) {
 		t.Parallel()
@@ -83,10 +86,10 @@ func testCreateAccount2(t *testing.T, repository user.Repository) {
 	t.Helper()
 	ctx := context.Background()
 
-	testCase := domain.User(
+	testCase := domain.User{
 		Email: "email2@gmail.com",
 		Username: "username2_test",
-		)
+	}
 
 	t.Run("testFollow", func(t *testing.T) {
 		t.Parallel()
@@ -100,15 +103,15 @@ func testFollow(t *testing.T, repository user.Repository) {
 	t.Helper()
 	ctx := context.Background()
 
-	testUser1 := domain.User(
+	testUser1 := domain.User{
 		Email: "email2@gmail.com",
-		Username: "username2_test"
-		)
+		Username: "username2_test",
+	}
 
-	testUser2 := domain.User(
+	testUser2 := domain.User{
 		Email: "email2@gmail.com",
-		Username: "username2_test"
-		)
+		Username: "username2_test",
+	}
 
 	t.Run("testFollow", func(t *testing.T) {
 		t.Parallel()
@@ -122,15 +125,15 @@ func testUnfollow(t *testing.T, repository user.Repository) {
 	t.Helper()
 	ctx := context.Background()
 
-	testUser1 := domain.User(
+	testUser1 := domain.User{
 		Email: "email2@gmail.com",
-		Username: "username2_test"
-		)
+		Username: "username2_test",
+	}
 
-	testUser2 := domain.User(
+	testUser2 := domain.User{
 		Email: "email2@gmail.com",
-		Username: "username2_test"
-		)
+		Username: "username2_test",
+	}
 
 	t.Run("testUnfollow", func(t *testing.T) {
 		t.Parallel()

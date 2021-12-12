@@ -3,8 +3,8 @@ package main
 import (
 	context "context"
 
-	profile "github.com/danial2026/golang-profile-graphql-kafka/internal/profile/grpc"
 	"github.com/danial2026/golang-profile-graphql-kafka/internal/profile/ports"
+	profilegrpc "github.com/danial2026/golang-profile-graphql-kafka/internal/profile/proto"
 	"github.com/danial2026/golang-profile-graphql-kafka/internal/profile/server"
 	"github.com/danial2026/golang-profile-graphql-kafka/internal/profile/service"
 
@@ -18,6 +18,6 @@ func main() {
 
 	server.RunGRPCServer(func(server *grpc.Server) {
 		svc := ports.NewGrpcServer(application)
-		profile.RegisterGrpcServerServer(server, svc)
+		profilegrpc.RegisterUserServer(server, svc)
 	})
 }

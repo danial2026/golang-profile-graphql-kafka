@@ -1,8 +1,10 @@
 syntax = "proto3";
 
+import "google/protobuf/empty.proto";
+
 package domain;
 
-option go_package = "./";
+option go_package = "./;proto";
 
 message Account {
   string ID        = 1;
@@ -17,10 +19,6 @@ message CreateAccountRequest {
   Account account  = 1;
 }
 
-message CreateAccountResponse {
-  Account account  = 1;
-}
-
 service User {
-  rpc CreateAccount (CreateAccountRequest) returns (CreateAccountResponse) {}
+  rpc CreateAccount (CreateAccountRequest) returns (google.protobuf.Empty) {}
 } 

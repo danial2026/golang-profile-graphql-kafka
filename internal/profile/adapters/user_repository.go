@@ -61,7 +61,7 @@ func NewMongoConnection() (*mongo.Collection, error) {
 	var collection *mongo.Collection
 	var ctx = context.TODO()
 
-	clientOptions := options.Client().ApplyURI("mongodb://localhost:37017/")
+	clientOptions := options.Client().ApplyURI("mongodb://localhost:57017/")
 	client, err := mongo.Connect(ctx, clientOptions)
 	if err != nil {
 		panic(err)

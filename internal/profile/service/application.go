@@ -15,7 +15,7 @@ func NewApplication(ctx context.Context) app.Application {
 	var collection *mongo.Collection
 	// var ctx = context.TODO()
 
-	clientOptions := options.Client().ApplyURI("mongodb://localhost:37017/")
+	clientOptions := options.Client().ApplyURI("mongodb://localhost:57017/")
 	client, err := mongo.Connect(ctx, clientOptions)
 	if err != nil {
 		panic(err)
@@ -33,8 +33,8 @@ func NewApplication(ctx context.Context) app.Application {
 	return app.Application{
 		Commands: app.Commands{
 			CreateAccount: command.NewCreateAccountHandler(usersRepository),
-			Follow:     command.NewFollowHandler(usersRepository),
-			Unfollow:   command.NewUnfollowHandler(usersRepository),
+			Follow:        command.NewFollowHandler(usersRepository),
+			Unfollow:      command.NewUnfollowHandler(usersRepository),
 		},
 		Queries: app.Queries{},
 	}
