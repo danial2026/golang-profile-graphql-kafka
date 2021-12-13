@@ -12,8 +12,6 @@ import (
 )
 
 func NewApplication(ctx context.Context) app.Application {
-	var collection *mongo.Collection
-	// var ctx = context.TODO()
 
 	clientOptions := options.Client().ApplyURI("mongodb://localhost:57017/")
 	client, err := mongo.Connect(ctx, clientOptions)
@@ -26,9 +24,7 @@ func NewApplication(ctx context.Context) app.Application {
 		panic(err)
 	}
 
-	collection = client.Database("golang_users_db").Collection("golang_feed")
-
-	feedRepository := adapters.NewMONGOFeedRepository(collection)
+	feedRepository := adapters.NewMongoFeedRepository(client)
 
 	return app.Application{
 		Commands: app.Commands{
