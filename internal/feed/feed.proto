@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+package domain;
+
+option go_package = "./;proto";
+
+message Feed {
+  string ID           = 1;
+  string username     = 2;
+  string PostId       = 3;
+  string createdTime  = 4;
+}
+
+message CreateNotificationRequest {
+  Feed feed  = 1;
+}
+
+service Posts {
+  rpc CreateNotification (CreateNotificationRequest) returns (google.protobuf.Empty) {}
+} 
