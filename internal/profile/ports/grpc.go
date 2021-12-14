@@ -5,7 +5,9 @@ import (
 
 	"github.com/danial2026/golang-profile-graphql-kafka/internal/profile/app"
 	"github.com/danial2026/golang-profile-graphql-kafka/internal/profile/domain"
-	proto "github.com/danial2026/golang-profile-graphql-kafka/internal/profile/proto"
+
+	proto "github.com/danial2026/golang-profile-graphql-kafka/internal/common/proto/profile"
+	//proto "github.com/danial2026/golang-profile-graphql-kafka/internal/profile/proto"
 
 	"github.com/golang/protobuf/ptypes/empty"
 	"google.golang.org/grpc/codes"

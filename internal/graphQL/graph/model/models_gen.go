@@ -2,24 +2,15 @@
 
 package model
 
-type NewPost struct {
-	ProfileID string `json:"profileId"`
-	Body      string `json:"body"`
-}
-
 type NewUser struct {
 	Email    string `json:"email"`
-	Username string `json:"Username"`
-}
-
-type Post struct {
-	ID        string `json:"id"`
-	ProfileID string `json:"profileId"`
-	Body      string `json:"body"`
+	Username string `json:"username"`
 }
 
 type User struct {
-	ID       string `json:"id"`
-	Email    string `json:"email"`
-	Username string `json:"Username"`
+	ID        string  `json:"id"`
+	Email     string  `json:"email"`
+	Username  string  `json:"username"`
+	Following []*User `json:"following"`
+	Followers []*User `json:"followers"`
 }

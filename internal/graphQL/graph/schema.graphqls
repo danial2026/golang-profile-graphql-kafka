@@ -1,32 +1,21 @@
 type User {
   id: ID!
   email: String!
-  Username: String!
+  username: String!
+
+  following: [User!]!
+  followers: [User!]!
 }
 
 input NewUser {
   email: String!
-  Username: String!
+  username: String!
 }
-
-type Post {
-  id: ID!
-  profileId: String!
-  body: String!
-}
-
-input NewPost {
-  profileId: String!
-  body: String!
-}
-
 
 type Query {
-  posts: [Post!]!
   users: [User!]!
 }
 
 type Mutation {
-  createUser(input: NewUser!): User!
-  createPost(input: NewPost!): Post!
+  createUser(input: NewUser!): Boolean
 }

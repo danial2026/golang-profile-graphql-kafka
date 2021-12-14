@@ -4,7 +4,7 @@ import (
 	context "context"
 
 	"github.com/danial2026/golang-profile-graphql-kafka/internal/profile/ports"
-	profilegrpc "github.com/danial2026/golang-profile-graphql-kafka/internal/profile/proto"
+	profilegrpc "github.com/danial2026/golang-profile-graphql-kafka/internal/common/proto/profile"
 	"github.com/danial2026/golang-profile-graphql-kafka/internal/profile/server"
 	"github.com/danial2026/golang-profile-graphql-kafka/internal/profile/service"
 

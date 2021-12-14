@@ -19,7 +19,7 @@ func init() {
 func RunGRPCServer(registerServer func(server *grpc.Server)) {
 	port := os.Getenv("PORT")
 	if port == "" {
-		port = "8084"
+		port = "50054"
 	}
 	addr := fmt.Sprintf(":%s", port)
 	RunGRPCServerOnAddr(addr, registerServer)
