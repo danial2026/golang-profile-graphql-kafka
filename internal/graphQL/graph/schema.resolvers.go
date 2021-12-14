@@ -6,6 +6,7 @@ package graph
 import (
 	"context"
 	"fmt"
+	"log"
 
 	profileProto "github.com/danial2026/golang-profile-graphql-kafka/internal/common/proto/profile"
 	"github.com/danial2026/golang-profile-graphql-kafka/internal/graphql/client"
@@ -15,6 +16,9 @@ import (
 
 func (r *mutationResolver) CreateUser(ctx context.Context, input model.NewUser) (*bool, error) {
 	client.UserClient.CreateAccount(ctx, ConvertToCreateAccountRequest(input))
+
+	log.Printf("%s", ConvertToCreateAccountRequest(input))
+	log.Printf("%s", input)
 
 	response := true
 

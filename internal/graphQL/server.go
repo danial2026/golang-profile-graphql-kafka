@@ -5,8 +5,9 @@ import (
 	"net/http"
 	"os"
 
+
+
 	"github.com/danial2026/golang-profile-graphql-kafka/internal/graphql/graph"
-	"github.com/danial2026/golang-profile-graphql-kafka/internal/graphql/client"
 	"github.com/danial2026/golang-profile-graphql-kafka/internal/graphql/graph/generated"
 
 	"github.com/99designs/gqlgen/graphql/handler"
@@ -16,7 +17,6 @@ import (
 const defaultPort = "8080"
 
 func main() {
-	client.ConnectToService()
 
 	port := os.Getenv("PORT")
 	if port == "" {
